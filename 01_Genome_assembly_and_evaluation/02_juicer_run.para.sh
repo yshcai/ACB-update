@@ -8,33 +8,35 @@ raw=/public/caiyuanshi/hifi/hic/ANNO_ANCGD180475_PM-ANCGD180475-17_2022-07-06_17
 if [ ! -d $juicer ];then
         mkdir -p $juicer
 fi
+##### activate conda environment #####
+source /public/caiyuanshi/miniconda3/bin/activate juicer
 
-# 0.hic reads
+##### 0.hic reads #####
 mkdir -p $juicer/work/FPH2/fastq
 fastq=$juicer/work/FPH2/fastq
 cd $fastq
 ln -s $raw/*.gz ./
 rename .fq.gz .fastq.gz *.fq.gz
 
-# 1.genome index
+##### 1.genome index #####
 mkdir -p $juicer/references
 references=$juicer/references
 cd $references
 cp $fasta ./
 bwa index -p ${fasta##*/} ${fasta##*/} &>bwa_run.log
 
-# 2.restriction enzyme map
+##### 2.restriction enzyme map #####
 mkdir -p $juicer/restriction_sites
 restriction_sites=$juicer/restriction_sites
 cd $restriction_sites
 python /public/caiyuanshi/bioinfo_software/juicer/juicer-1.6/misc/generate_site_positions.py DpnII Of_FP283 $references/${fasta##*/} &> restriction_site.log
 awk 'BEGIN{OFS="\t"}{print $1, $NF}' Of_FP283_DpnII.txt > Of_FP283.chrom.sizes # generate chromosomes size file
 
-# 3.scripts
+##### 3.scripts #####
 cd $juicer
 ln -s /public/caiyuanshi/bioinfo_software/juicer/juicer-1.6/CPU scripts
 
-# 4.run juicer.sh
+##### 4.run juicer.sh #####
 /public/caiyuanshi/bioinfo_software/juicer/juicer-1.6/CPU/juicer.sh \
 -z $references/${fasta##*/} \
 -p $restriction_sites/Of_FP283.chrom.sizes \
