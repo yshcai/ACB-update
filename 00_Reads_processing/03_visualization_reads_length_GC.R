@@ -25,7 +25,7 @@ p2 <- ggplot(read, aes(x = length, y = GC)) +
         axis.title.x = element_text(size = 13),
         axis.title.y = element_text(size = 13))
 
-# GC Content-reads count
+# GC content-reads count
 p3 <- ggplot(read, aes(y = GC))+
   geom_histogram(bins = 100, fill = "#9da396", colour = "#9da396") +
   scale_x_continuous(labels = c(0,2,4,6,8,10)) +
