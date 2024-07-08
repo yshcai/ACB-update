@@ -25,3 +25,9 @@ k=19
 cd qv
 /public/caiyuanshi/miniconda3/envs/merqury/bin/meryl k=$k count output read.meryl $ccs
 /public/caiyuanshi/miniconda3/envs/merqury/share/merqury/merqury.sh read.meryl $fasta Ostrinia
+
+##### hic contact signals #####
+# generate hic matrix
+nohup bash run_hicpro.sh > run_hicpro.log &
+# visualization
+python3 /public/caiyuanshi/bioinfo_software/endhic/EndHiC-master/matrix2heatmap.py FPH2_500000_abs.bed FPH2_500000.matrix 1
