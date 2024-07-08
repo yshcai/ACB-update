@@ -4,10 +4,13 @@ asm=/public/caiyuanshi/hifi/t2t_of/2.Assembly
 fasta=/public/caiyuanshi/hifi/t2t_of/2.Assembly/contig_fasta
 database=/public/caiyuanshi/bioinfo_software/busco_database
 
+##### activate conda environment #####
+source /public/caiyuanshi/miniconda3/bin/activate assembly
+
+##### contig assembly and evalution #####
 mkdir -p $fasta/hifi_only_s0.25/busco
 output=$fasta/hifi_only_s0.25
 hifiasm -o ${asm}/Of_FP283.asm -t32 -s0.25 ${ccs} &> $output/run_hifisam.log
-
 for i in `ls $asm/*.p_ctg.gfa`
 do
         awk '/^S/{print ">"$2;print $3}' $i > $output/${i##*/}.fa
