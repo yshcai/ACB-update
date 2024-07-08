@@ -1,8 +1,8 @@
 # !/bin/bash
 # How to run the Juicer on the target genome assembly?
 
-fasta=/public/caiyuanshi/hifi/t2t_of/2.Assembly/contig_fasta/hifi_only_s0.25/Of_FP283.asm.bp.p_ctg.gfa.fa
-juicer=/public/caiyuanshi/hifi/t2t_of/2.Assembly/contig_fasta/hifi_only_s0.25/juicer
+fasta=/public/caiyuanshi/hifi/t2t_of/2.Assembly/contig_fasta/hifi_only_s0.25/final_assembly/Of_FP283.asm.bp.p_ctg.final.w80.fa
+juicer=/public/caiyuanshi/hifi/t2t_of/2.Assembly/contig_fasta/hifi_only_s0.25/final_assembly/juicer
 raw=/public/caiyuanshi/hifi/hic/ANNO_ANCGD180475_PM-ANCGD180475-17_2022-07-06_17-51-30_BHJCVYDSX3/Rawdata/FPH-2
 
 if [ ! -d $juicer ];then
