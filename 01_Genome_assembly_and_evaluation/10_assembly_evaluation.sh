@@ -31,3 +31,11 @@ cd qv
 nohup bash run_hicpro.sh > run_hicpro.log &
 # visualization
 python3 /public/caiyuanshi/bioinfo_software/endhic/EndHiC-master/matrix2heatmap.py FPH2_500000_abs.bed FPH2_500000.matrix 1
+
+##### activate conda environment #####
+source /public/caiyuanshi/miniconda3/bin/activate quartet
+
+##### telomeric regions #####
+tidk search -s TTAGG -o Ofur -d ./ $fasta -e bedgraph
+tidk search -s TTAGG -o Ofur -d ./ $fasta
+tidk plot --tsv Ofur_telomeric_repeat_windows.tsv --output Ofur --height 120 --width 800
