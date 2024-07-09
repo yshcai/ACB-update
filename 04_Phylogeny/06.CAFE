@@ -1,7 +1,0 @@
-# !/bin/bash
-
-##### activate conda environment #####
-source /share/home/nxy1hj2cys/miniconda3/bin/activate evolution
-
-##### run cafe #####
-cafe5 -c 24 -i cafe.input.filter2.tsv -t tree.txt -p -k 2 -o k2p
