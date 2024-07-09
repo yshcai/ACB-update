@@ -9,7 +9,7 @@ do
         if [ ! -d  "$i" ];then
                 mkdir -p $i
         else
-                echo "File exists."
+                echo "Directory exists."
         fi
 done
 
