@@ -6,10 +6,10 @@ database=/public/caiyuanshi/bioinfo_software/busco_database
 
 for i in "01.minimap2" "02.cov" "03.purge"
 do
-        if [ ! -d  "$i" ];then
+        if [ ! -d  $i ];then
                 mkdir -p $i
         else
-                echo "Directory exists."
+                echo "Directory $i exists."
         fi
 done
 
