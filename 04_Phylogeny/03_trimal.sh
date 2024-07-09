@@ -26,3 +26,4 @@ done
 ##### concatenated all alignment results to create one super alignment #####
 paste -d " " *.trimal.sort > all_single_copy_aln.fa
 sed -i "s/\ //g" all_single_copy_aln.fa
+# convert fasta to phylip using aliview and leave six spaces after the species name
