@@ -34,7 +34,6 @@ purge_haplotigs purge -g $fasta -c ../02.cov/coverage_stats.csv -d -b ../01.mini
 mkdir quast busco
 for i in `ls ./*.fasta`
 do
-
         python /public/caiyuanshi/miniconda3/envs/assembly/bin/quast ${i} -t 8 -o quast/${i##*/}
         busco -i ${i} -o ${i##*/} --out_path busco/ -m genome --augustus --offline -l ${database}/insecta_odb10 -c 24
 done
