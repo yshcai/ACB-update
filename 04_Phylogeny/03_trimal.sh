@@ -5,7 +5,7 @@ mafft=/share/home/nxy1hj2cys/hifi/t2t_of/5.Phylogeny/02.Mafft
 source /share/home/nxy1hj2cys/miniconda3/bin/activate evolution
 
 ##### trim multiple sequence alignment results #####
-cd 03.trimal
+mkdir 03.trimal && cd 03.trimal
 for i in `ls $mafft/*.aln`
 do
         file=$(basename $i)
