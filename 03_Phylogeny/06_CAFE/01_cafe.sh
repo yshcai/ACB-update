@@ -25,7 +25,16 @@ grep 'OG' slurm.12019.err | cut -d ':' -f 1 | sort -u | grep -f - -v cafe.input.
 rm -r k2p
 cafe5 -c 24 -i cafe.input.filter2.tsv -t tree.txt -p -k 2 -o k2p
 
-##### extract expanded gene families #####
+##### extract expanded or contracted gene families #####
 # gene families underwent significant expansion or contraction
 cat Gamma_family_results.txt | grep "y" | cut -f 1 > Gamma_family_results.p0.05.significant
-grep -f Gamma_family_results.p0.05.significant Gamma_change.tab > Gamma_change.tab.p0.05.significant
+
+# extract gene corresponding to orthogroups with significant expansion in the target species
+cut -f 1,36 Gamma_change.tab | awk 'NR > 1 && $2 >= 1 {print $0}' | less > Ofur.expanded.txt
+grep -f Gamma_family_results.p0.05.significant Ofur.expanded.txt | cut -f 1 | less > Ofur.expanded.p0.05.significant
+grep -f Ofur.expanded.p0.05.significant Orthogroups.txt | sed 's/ /\n/g' | grep 'OfOGS' | sort | uniq | less > Ofur.expanded.p0.05.significant.genes
+
+# extract gene corresponding to orthogroups with significant contraction in the target species
+cut -f 1,36 Gamma_change.tab | awk 'NR > 1 && $2 < 0 {print $0}' | less > Ofur.contracted.txt
+grep -f Gamma_family_results.p0.05.significant Ofur.contracted.txt | cut -f 1 | less > Ofur.contracted.p0.05.significant
+grep -f Ofur.contracted.p0.05.significant Orthogroups.txt | sed 's/ /\n/g' | grep 'OfOGS' | sort | uniq | less > Ofur.contracted.p0.05.significant.genes
