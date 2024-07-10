@@ -1,0 +1,12 @@
+# input preparation
+# Multiple sequence alignment file: all_single_copy_aln.phy
+# tree file from RAxML: RAxML_bipartitions.all_single_copy_aln.raxml.tree
+
+# generate tree without branch length
+Rscript generate_nobranch_tree.R
+
+# add the the number of species in the first line of the tree file
+# add calibration time points from TimeTree
+# examples are as follows (http://abacus.gene.ucl.ac.uk/software/MCMCtree.Tutorials.pdf)
+7 1
+((((human, (chimpanzee, bonobo)) '>.06<.08', gorilla), (orangutan, sumatran)) '>.12<.16', gibbon);

@@ -13,7 +13,7 @@ do
 done
 
 ##### activate conda environment #####
-source /public/caiyuanshi/miniconda3/bin/activate evolution
+source /share/home/nxy1hj2cys/miniconda3/bin/activate evolution
 
 ##### Obtain the protein sequence corresponding to the longest transcript of the target species, such as Anopheles gambiae #####
 python3 get_longest_seq_from_ncbi_gff3.py GCF_943734735.2_idAnoGambNW_F1_1_protein.faa GCF_943734735.2_idAnoGambNW_F1_1_genomic.gff Anopheles_gambiae.pep.no_alt.fa
