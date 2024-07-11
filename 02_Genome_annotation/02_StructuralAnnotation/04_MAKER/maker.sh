@@ -27,3 +27,6 @@ map_gff_ids Ofur.maker.all.name.map Ofur.maker.only.renamed.gff3
 ##### replace names in FASTA headers #####
 map_fasta_ids Ofur.maker.all.name.map Ofur.all.maker.proteins.renamed.fasta
 map_fasta_ids Ofur.maker.all.name.map Ofur.all.maker.transcripts.renamed.fasta
+
+##### format maker gff3 required by pasa #####
+python3 maker_gff3_2_PASA_gff3.py Ofur.maker.only.renamed.gff3 Ofur.maker.only.renamed.fixed.gff3
