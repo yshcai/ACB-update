@@ -15,7 +15,14 @@ tblastn -query maker_genes_protein_from_Bmor.fa -db OFUR.T2T.genome.chr.fasta -o
 ##### filter the results from nucmer based on the results of blast #####
 head -n 29 Ofur_Bmor.delta.dnadiff.1coords.align.list | awk '{print $2"\t"$3}' | less > Ofur_Bmor.delta.dnadiff.1coords.aligntop29.list
 grep -w -f Ofur_Bmor.delta.dnadiff.1coords.aligntop29.list Ofur_Bmor.delta.dnadiff.1coords > Ofur_Bmor.delta.dnadiff.1coords.filter.1coords
+less Ofur_Bmor.delta.dnadiff.1coords.filter.1coords | awk -v OFS="\t" '{print $12,$1,$2,$13,$3,$4}' | less > Ofur_Bmor.delta.dnadiff.1coords.filter.1coords.synteny
 
 ##### identify sex chromosomes #####
 nucmer -t 20 -p Ofur_Cmed $Cmed $Ofur
 dnadiff -d Ofur_Cmed.delta -p Ofur_Cmed.delta.dnadiff
+less Ofur_Cmed.delta.dnadiff.1coords | cut -f 12,13 | sort -k 1,1 -k 2,2n | uniq -dc | sort -k 1,1nr | less > Ofur_Cmed.delta.dnadiff.1coords.align.list
+head -n 31 Ofur_Cmed.delta.dnadiff.1coords.align.list | awk '{print $2"\t"$3}' | less > Ofur_Cmed.delta.dnadiff.1coords.aligntop31.list
+grep -w -f Ofur_Cmed.delta.dnadiff.1coords.aligntop31.list Ofur_Cmed.delta.dnadiff.1coords > Ofur_Cmed.delta.dnadiff.1coords.filter.1coords
+less Ofur_Cmed.delta.dnadiff.1coords.filter.1coords | awk -v OFS="\t" '{print $12,$1,$2,$13,$3,$4}' | less > Ofur_Cmed.delta.dnadiff.1coords.filter.1coords.synteny
+
+##### visualization by TBtools-II #####
